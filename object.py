@@ -77,7 +77,7 @@ class CoverLetterMaintainer:
 
         previous_data_filenames = [key for key in data.keys()]
 
-        files = os.listdir("C:/Users/russ1/Documents/Important Documents/Resume/Software Engineer/Cover Letters")
+        files = os.listdir(self.cover_letter_path)
 
         new_files = []
         for file in files:
@@ -100,7 +100,7 @@ class CoverLetterMaintainer:
         json_file.close()
         data_keys = data.keys()
 
-        files = os.listdir("C:/Users/russ1/Documents/Important Documents/Resume/Software Engineer/Cover Letters")
+        files = os.listdir(self.cover_letter_path)
 
         print("Updating the File Cache")
 
