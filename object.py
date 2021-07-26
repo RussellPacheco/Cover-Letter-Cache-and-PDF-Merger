@@ -111,6 +111,7 @@ class CoverLetterMaintainer:
                 new_files.append(file)
 
         for filename in new_files:
+            data[filename] = {}
             data[filename]["queries"] = []
 
         with open(self.data_file_path, "w") as json_file:
@@ -128,7 +129,7 @@ class CoverLetterMaintainer:
         json_file.close()
 
         for key in data.keys():
-            if filename in key:
+            if filename.lower() in key.lower():
                 print(f"Opening {key}...")
                 os.startfile(self.cover_letter_path+key)
 
@@ -209,8 +210,10 @@ class CoverLetterMaintainer:
             for i in range(len(list1)):
                 if len(list2) == 0 or len(list2) < i + 1:
                     print(f"{list1[i]}")
-                elif len(list3) == 0:
-                    print(f"{list1[i]}      {list2[i]}")
+                elif len(list3) == 0 or len(list3) < i + 1:
+                    line1_spacing = " " * 17
+
+                    print(f"{list1[i]}{line1_spacing}{list2[i]}")
                 else:
 
                     line1_spacing = " " * 17
@@ -223,6 +226,8 @@ class CoverLetterMaintainer:
                     if len(list2[i]) > 27:
                         diff = len(list2[i]) - 27
                         line2_spacing = " " * (17 - diff)
+
+
 
                     print(f"{list1[i]}{line1_spacing}{list2[i] or ''}{line2_spacing}{list3[i] or ''}")
 
